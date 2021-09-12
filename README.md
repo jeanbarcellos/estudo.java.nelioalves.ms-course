@@ -52,6 +52,7 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 **Referências:**
 
 - https://www.udemy.com/course/microsservicos-java-spring-cloud/
+- https://github.com/acenelio/ms-course
 
 # Conteúdo do curso
 

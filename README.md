@@ -1,4 +1,5 @@
-*Repositório apenas para estudo*
+_Repositório apenas para estudo_
+
 # Curso: Microsserviços Java com Spring Boot e Spring Cloud
 
 Códigos gerado a partir do curso '**Microsserviços Java com Spring Boot e Spring Cloud**'
@@ -19,14 +20,14 @@ O objetivo deste curso não é esgotar todos recursos do ecossistema Spring, mas
 
 Os conteúdos do curso incluem:
 
-  - Feign para requisições de API entre microsserviços
-  - Ribbon para balanceamento de carga
-  - Servidor Eureka para registro dos microsserviços
-  - API Gateway Zuul para roteamento e autorização
-  - Hystrix para tolerância a falhas
-  - OAuth e JWT para autenticação e autorização
-  - Servidor de configuração centralizada com dados em repositório Git
-  - Geração de containers Docker para os microsserviços e bases de dados
+- Feign para requisições de API entre microsserviços
+- Ribbon para balanceamento de carga
+- Servidor Eureka para registro dos microsserviços
+- API Gateway Zuul para roteamento e autorização
+- Hystrix para tolerância a falhas
+- OAuth e JWT para autenticação e autorização
+- Servidor de configuração centralizada com dados em repositório Git
+- Geração de containers Docker para os microsserviços e bases de dados
 
 Este curso é de **nível iniciante** do ponto de vista de microsserviços e do ferramental Spring Cloud, mas vale ressaltar que **não é para iniciantes em Java ou Spring Boot**. É preciso já ter pelo menos conhecimento básico de construção de API's REST com Spring Boot e Java.
 
@@ -35,13 +36,13 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 <br>
 
 **O que será aprendido:**
- 
-  - Uma introdução a algumas das principais ferramentas do Spring Cloud para estruturação de um sistema em microsserviços
-  - Chamadas de API entre microsserviços por meio de clientes Feign
-  - Criar microsserviços escaláveis, com resolução de nomes e balanceamento de carga de forma transparente, usando servidor Eureka
-  - Roteamento transparente de microsserviços com Zuul API Gateway
-  - Configuração centralizada por meio de um servidor de configuração
-  - Autenticação e autorização compartilhada por meio do API Gateway, usando Oauth e JWT
+
+- Uma introdução a algumas das principais ferramentas do Spring Cloud para estruturação de um sistema em microsserviços
+- Chamadas de API entre microsserviços por meio de clientes Feign
+- Criar microsserviços escaláveis, com resolução de nomes e balanceamento de carga de forma transparente, usando servidor Eureka
+- Roteamento transparente de microsserviços com Zuul API Gateway
+- Configuração centralizada por meio de um servidor de configuração
+- Autenticação e autorização compartilhada por meio do API Gateway, usando Oauth e JWT
 
 <br>
 
@@ -54,7 +55,7 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 - https://www.udemy.com/course/microsservicos-java-spring-cloud/
 - https://github.com/acenelio/ms-course
 
-# Conteúdo do curso
+## Conteúdo do curso
 
 - Seção 01: Introdução
 - Seção 02: Fase 1: Comunicação simples, Feign, Ribbon
@@ -62,3 +63,15 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 - Seção 04: Fase 3: Configuração centralizada
 - Seção 05: Fase 4: Autenticação e autorização
 - Seção 06: Criando e testando containers Docker
+
+<br>
+
+## Anotações
+
+- RestTemplate
+  - Cliente síncrono para executar solicitações HTTP, expondo uma API de método de modelo simples sobre bibliotecas cliente HTTP subjacentes
+  - [Documentação](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html)
+- Feign client
+  - Feign é um cliente de serviço da Web declarativo. Facilita a escrita de clientes de serviço da web.
+  - Requisições de API entre microsserviços
+  - [Documentação](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)

@@ -75,3 +75,9 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
   - Feign é um cliente de serviço da Web declarativo. Facilita a escrita de clientes de serviço da web.
   - Requisições de API entre microsserviços
   - [Documentação](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)
+- JAXB
+  - Fornece suporte à manipulação de objetos Java e XML. Sua principal característica é a capacidade de vincular XML a objetos Java e vice-versa
+  - [Documentação](https://javaee.github.io/jaxb-v2/)
+- Eureka
+  - comunicação e descoberta de serviços em uma arquitetura de microservices
+  - [Documentação](https://spring.io/projects/spring-cloud-netflix)

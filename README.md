@@ -101,3 +101,55 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 - **Zuul**
   - Solução de roteamento dinâmico que possibilita monitoramento, resiliência e segurança para aplicações, que também pode ser encontrada no sub-projeto spring-cloud-netflix.
   - [Documentação](https://github.com/Netflix/zuul)
+
+<br>
+
+## Bugs encontratos + Soluções
+
+- **Geral**
+
+  Ao criar os projetos, copiar o pom.xml do mesmo projeto do repositório do curso:
+
+  ```
+  https://github.com/acenelio/ms-course
+  ```
+
+- **Aula 21 - Histrix para tolerância de falhas**
+
+  Projeto para de funcionar pois o pacote `com.netflix.hystrix.contrib` não é encontrato
+
+  Erro:
+
+  - `import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;` não é encontrado
+
+  Solução:
+
+  - Em todos os projetos, no arquivo `pom.xml` trocar a versão do `Hoxton` da `8` para a `9`.
+
+    Antes:
+
+    ```xml
+    <version>Hoxton.SR9</version>
+    ```
+
+    Depois:
+
+    ```xml
+    <version>Hoxton.SR8</version>
+    ```
+
+- **Aula 21 - Histrix para tolerância de falhas**
+
+  - Erro:
+
+    Github não autoriza o acesso ao diretório privado, mesmo com o login e senha corretos.
+
+  - Solução:
+
+    O Github só autoria acesso a diretório privado, usando o protocolo HTTP, através de um token de acesso. Então ao invés de informar a senha, deve-se informar o token gerado.
+
+    - Deve-se gerar um token para acesso http no `Gituhub`
+
+      Tutotial: https://docs.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token
+
+    - Colocar o token gerado na variável de ambiente `GITHUB_PASS`

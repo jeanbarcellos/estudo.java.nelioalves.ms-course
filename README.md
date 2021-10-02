@@ -118,13 +118,13 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 
   Projeto para de funcionar pois o pacote `com.netflix.hystrix.contrib` não é encontrato
 
-  Erro:
+  - Bug:
 
-  - `import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;` não é encontrado
+    `import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;` não é encontrado
 
-  Solução:
+  - Solução:
 
-  - Em todos os projetos, no arquivo `pom.xml` trocar a versão do `Hoxton` da `8` para a `9`.
+    Em todos os projetos, no arquivo `pom.xml` trocar a versão do `Hoxton` da `8` para a `9`.
 
     Antes:
 
@@ -140,7 +140,7 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 
 - **Aula 30 - Repositório Git privativo**
 
-  - Erro:
+  - Bug:
 
     Github não autoriza o acesso ao diretório privado, mesmo com o login e senha corretos.
 
@@ -148,24 +148,68 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 
     O Github só autoria acesso a diretório privado, usando o protocolo HTTP, através de um token de acesso. Então ao invés de informar a senha, deve-se informar o token gerado.
 
-    - Deve-se gerar um token para acesso http no `Gituhub`
+    - Deve-se gerar um token para acesso http no `Github`
 
       Tutotial: https://docs.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token
 
     - Colocar o token gerado na variável de ambiente `GITHUB_PASS`
 
-- **Aula 41 - Login e token JWT PARTE 2/2 **
+- **Aula 41 - Login e token JWT PARTE 2/2**
 
-  Projeto hr-oauth não sobre.
+  - Bug:
+
+    Projeto `hr-oauth` não sobre.
 
   - Solução:
-  
-  Adicionar a seguinte dependência no arquivo pom.xml do projeto hr-oauth
 
-  ```xml
-	<dependency>
-		<groupId>com.sun.xml.bind</groupId>
-		<artifactId>jaxb-impl</artifactId>
-		<version>2.3.4</version>
-	</dependency>
-  ```
+    Adicionar a seguinte dependência no arquivo `pom.xml` do projeto `hr-oauth`
+
+    ```xml
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.3.4</version>
+    </dependency>
+    ```
+
+    ATENÇÃO: A Versão deve ser a mesma que está no início do arquivo `pom.xml`
+
+    ```xml
+      <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>2.3.4.RELEASE</version>
+      <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+    ```
+
+- **Aula 42 - Autorização pelo Zuul**
+
+  - Bug:
+
+    Projeto `hr-api-gateway-zuul` não sobre.
+
+  - Solução:
+
+    Mesma solução encontrada para o bug da aula 41
+
+    Adicionar a seguinte dependência no arquivo `pom.xml` do projeto `hr-api-gateway-zuul`
+
+    ```xml
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.3.4</version>
+    </dependency>
+    ```
+
+    ATENÇÃO: A Versão deve ser a mesma que está no início do arquivo `pom.xml`
+
+    ```xml
+      <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>2.3.4.RELEASE</version>
+      <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+    ```

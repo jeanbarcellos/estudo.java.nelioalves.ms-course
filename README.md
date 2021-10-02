@@ -138,7 +138,7 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
     <version>Hoxton.SR8</version>
     ```
 
-- **Aula 21 - Histrix para tolerância de falhas**
+- **Aula 30 - Repositório Git privativo**
 
   - Erro:
 
@@ -153,3 +153,19 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
       Tutotial: https://docs.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token
 
     - Colocar o token gerado na variável de ambiente `GITHUB_PASS`
+
+- **Aula 41 - Login e token JWT PARTE 2/2 **
+
+  Projeto hr-oauth não sobre.
+
+  - Solução:
+  
+  Adicionar a seguinte dependência no arquivo pom.xml do projeto hr-oauth
+
+  ```xml
+	<dependency>
+		<groupId>com.sun.xml.bind</groupId>
+		<artifactId>jaxb-impl</artifactId>
+		<version>2.3.4</version>
+	</dependency>
+  ```

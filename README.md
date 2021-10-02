@@ -69,8 +69,10 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 ## Anotações
 
 - **RestTemplate**
+
   - Cliente síncrono para executar solicitações HTTP, expondo uma API de método de modelo simples sobre bibliotecas cliente HTTP subjacentes
   - [Documentação](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html)
+
 - **Feign client**
 
   - Cliente de serviço da Web declarativo. Facilita a escrita de clientes de serviço da web.
@@ -87,7 +89,7 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
   - Responsável por integrar todas as soluções em aplicações Spring Boot, onde toda configuração é feita através de anotações e propriedades do `application.properties`;
   - [Documentaçãp](https://spring.io/projects/spring-cloud)
 
-- **Eureka**
+- **Eureka, Discovery Server**
 
   - Comunicação e descoberta de serviços em uma arquitetura de microservices
   - [Documentação](https://spring.io/projects/spring-cloud-netflix)
@@ -98,9 +100,26 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
   - É uma biblioteca de latência e tolerância a falhas projetada para isolar pontos de acesso a sistemas remotos, serviços e bibliotecas de terceiros, interromper a falha em cascata e permitir a resiliência em sistemas distribuídos complexos onde a falha é inevitável
   - [Documentação](https://github.com/Netflix/Hystrix)
 
-- **Zuul**
+- **Zuul, API Gateway**
+
   - Solução de roteamento dinâmico que possibilita monitoramento, resiliência e segurança para aplicações, que também pode ser encontrada no sub-projeto spring-cloud-netflix.
   - [Documentação](https://github.com/Netflix/zuul)
+
+- **Actuator**
+
+  - Monitorar nosso aplicativo, reunir métricas, entender o tráfego ou o estado de nosso banco de dados torna-se trivial com essa dependência
+  - Disponibiliza série de recursos adicionais para ajudá-lo a monitorar e gerenciar seu aplicativo ao colocá-lo em produção
+  - [Documentação](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
+
+- **OAuth**
+
+  - É um protocolo de autorização que permite que uma aplicação se autentique em outra. Para que isso aconteça, uma aplicação pede permissão de acesso para um usuário, sem que para isso ela tenha acesso a alguma senha dele. O usuário pode conceder ou não o acesso à aplicação. Depois da permissão ser aceita, caso o usuário precise alterar a senha de acesso, a permissão continuará válida para a aplicação e, caso necessário, a permissão dada à aplicação pode ser revogada a qualquer momento também.
+  - [Documentação](https://oauth.net/2/)
+
+- **Spring Cloud Security**
+
+  - Fornece um conjunto de princípios básicos para a construção de aplicativos e serviços seguros com o mínimo de confusão
+  - [Documentação](https://spring.io/projects/spring-cloud-security)
 
 <br>
 

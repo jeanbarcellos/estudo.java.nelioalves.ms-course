@@ -181,45 +181,65 @@ docker run -P --network hr-net hr-payroll:v1
 
 ## hr-oauth
 
+Acessar o terminal (em modo administrador) na raiz do projeto `hr-oauth`
+
+Gerar a `build` Java, usando o comando:
+
+```
+mvnw clean package -DskipTests
 ```
 
+Criar o arquivo `Dockerfile` com o seguinte conteúdo:
+
+```
 FROM openjdk:11
 VOLUME /tmp
 ADD ./target/hr-oauth-0.0.1-SNAPSHOT.jar hr-oauth.jar
 ENTRYPOINT ["java","-jar","/hr-oauth.jar"]
-
 ```
 
+Gerar `imagem` `Docker`, usando o comando:
+
 ```
-
-mvnw clean package -DskipTests
-
 docker build -t hr-oauth:v1 .
+```
 
+Levantar um `container` com a `imagem` recém criada, usando o comando:
+
+```
 docker run -P --network hr-net hr-oauth:v1
-
 ```
 
 ## hr-api-gateway-zuul
 
+Acessar o terminal (em modo administrador) na raiz do projeto `hr-api-gateway-zuul`
+
+Gerar a `build` Java, usando o comando:
+
+```
+mvnw clean package -DskipTests
 ```
 
+Criar o arquivo `Dockerfile` com o seguinte conteúdo:
+
+```
 FROM openjdk:11
 VOLUME /tmp
 EXPOSE 8765
 ADD ./target/hr-api-gateway-zuul-0.0.1-SNAPSHOT.jar hr-api-gateway-zuul.jar
 ENTRYPOINT ["java","-jar","/hr-api-gateway-zuul.jar"]
-
 ```
 
+Gerar `imagem` `Docker`, usando o comando:
+
 ```
-
-mvnw clean package -DskipTests
-
 docker build -t hr-api-gateway-zuul:v1 .
+```
 
+Levantar um `container` com a `imagem` recém criada, usando o comando:
+
+```
 docker run -p 8765:8765 --name hr-api-gateway-zuul --network hr-net hr-api-gateway-zuul:v1
-
 ```
 
 ## Alguns comandos Docker
@@ -227,53 +247,37 @@ docker run -p 8765:8765 --name hr-api-gateway-zuul --network hr-net hr-api-gatew
 Criar uma rede Docker
 
 ```
-
 docker network create <nome-da-rede>
-
 ```
 
 Baixar imagem do Dockerhub
 
 ```
-
 docker pull <nome-da-imagem:tag>
-
 ```
 
 Ver imagens
 
 ```
-
 docker images
-
 ```
 
 Criar/rodar um container de uma imagem
 
 ```
-
 docker run -p <porta-externa>:<porta-interna> --name <nome-do-container> --network <nome-da-rede> <nome-da-imagem:tag>
-
 ```
 
 Listar containers
 
 ```
-
 docker ps
 
 docker ps -a
-
 ```
 
 Acompanhar logs do container em execução
 
 ```
-
 docker logs -f <container-id>
-
-```
-
-```
-
 ```

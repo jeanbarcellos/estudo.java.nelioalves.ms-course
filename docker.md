@@ -18,7 +18,13 @@ docker run -p 5433:5432 --name hr-user-pg12 --network hr-net -e POSTGRES_PASSWOR
 
 ## hr-config-server
 
-Criar quivo `Dockerfile` na raiz do projeto `hr-config-server` com o seguinte conteúdo:
+Comando para gerar a build Java
+
+```
+mvnw clean package
+```
+
+Criar o arquivo `Dockerfile` na raiz do projeto `hr-config-server` com o seguinte conteúdo:
 
 ```
 FROM openjdk:11
@@ -26,12 +32,6 @@ VOLUME /tmp
 EXPOSE 8888
 ADD ./target/hr-config-server-0.0.1-SNAPSHOT.jar hr-config-server.jar
 ENTRYPOINT ["java","-jar","/hr-config-server.jar"]
-```
-
-Comando para gerar a build Java
-
-```
-mvnw clean package
 ```
 
 Comando para gerar imagem docker
@@ -48,24 +48,32 @@ docker run -p 8888:8888 --name hr-config-server --network hr-net -e GITHUB_USER=
 
 ## hr-eureka-server
 
+Comando para gerar a build Java
+
+```
+mvnw clean package
 ```
 
+Criar o arquivo `Dockerfile` na raiz do projeto `hr-eureka-server` com o seguinte conteúdo:
+
+```
 FROM openjdk:11
 VOLUME /tmp
 EXPOSE 8761
 ADD ./target/hr-eureka-server-0.0.1-SNAPSHOT.jar hr-eureka-server.jar
 ENTRYPOINT ["java","-jar","/hr-eureka-server.jar"]
-
 ```
 
+Comando para gerar imagem docker
+
 ```
-
-mvnw clean package
-
 docker build -t hr-eureka-server:v1 .
+```
 
+Comando para levantar um container com a imagem recém criada
+
+```
 docker run -p 8761:8761 --name hr-eureka-server --network hr-net hr-eureka-server:v1
-
 ```
 
 ## hr-worker

@@ -18,13 +18,15 @@ docker run -p 5433:5432 --name hr-user-pg12 --network hr-net -e POSTGRES_PASSWOR
 
 ## hr-config-server
 
-Comando para gerar a build Java
+Acessar o terminal (em modo administrador) na raiz do projeto `hr-config-server`
+
+Gerar a `build` Java, usando o comando:
 
 ```
 mvnw clean package
 ```
 
-Criar o arquivo `Dockerfile` na raiz do projeto `hr-config-server` com o seguinte conteúdo:
+Criar o arquivo `Dockerfile` com o seguinte conteúdo:
 
 ```
 FROM openjdk:11
@@ -34,13 +36,13 @@ ADD ./target/hr-config-server-0.0.1-SNAPSHOT.jar hr-config-server.jar
 ENTRYPOINT ["java","-jar","/hr-config-server.jar"]
 ```
 
-Comando para gerar imagem docker
+Gerar `imagem` `Docker`, usando o comando:
 
 ```
 docker build -t hr-config-server:v1 .
 ```
 
-Comando para levantar um container com a imagem recém criada
+Levantar um `container` com a `imagem` recém criada, usando o comando:
 
 ```
 docker run -p 8888:8888 --name hr-config-server --network hr-net -e GITHUB_USER=jeanbarcellos@hotmail.com -e GITHUB_PASS= hr-config-server:v1
@@ -48,13 +50,15 @@ docker run -p 8888:8888 --name hr-config-server --network hr-net -e GITHUB_USER=
 
 ## hr-eureka-server
 
-Comando para gerar a build Java
+Acessar o terminal (em modo administrador) na raiz do projeto `hr-eureka-server`
+
+Gerar a `build` Java, usando o comando:
 
 ```
 mvnw clean package
 ```
 
-Criar o arquivo `Dockerfile` na raiz do projeto `hr-eureka-server` com o seguinte conteúdo:
+Criar o arquivo `Dockerfile` com o seguinte conteúdo:
 
 ```
 FROM openjdk:11
@@ -64,13 +68,13 @@ ADD ./target/hr-eureka-server-0.0.1-SNAPSHOT.jar hr-eureka-server.jar
 ENTRYPOINT ["java","-jar","/hr-eureka-server.jar"]
 ```
 
-Comando para gerar imagem docker
+Gerar `imagem` `Docker`, usando o comando:
 
 ```
 docker build -t hr-eureka-server:v1 .
 ```
 
-Comando para levantar um container com a imagem recém criada
+Levantar um `container` com a `imagem` recém criada, usando o comando:
 
 ```
 docker run -p 8761:8761 --name hr-eureka-server --network hr-net hr-eureka-server:v1
@@ -78,24 +82,39 @@ docker run -p 8761:8761 --name hr-eureka-server --network hr-net hr-eureka-serve
 
 ## hr-worker
 
+Acessar o terminal (em modo administrador) na raiz do projeto `hr-worker`
+
+Gerar a `build` Java, usando o comando:
+
+```
+mvnw clean package -DskipTests
 ```
 
+- Obs: o argumento `-DskipTests` é para evitar que se faça testes acessando o banco de dados
+
+Criar o arquivo `Dockerfile` com o seguinte conteúdo:
+
+```
 FROM openjdk:11
 VOLUME /tmp
 ADD ./target/hr-worker-0.0.1-SNAPSHOT.jar hr-worker.jar
 ENTRYPOINT ["java","-jar","/hr-worker.jar"]
-
 ```
 
+Gerar `imagem` `Docker`, usando o comando:
+
 ```
-
-mvnw clean package -DskipTests
-
 docker build -t hr-worker:v1 .
+```
 
-docker run -P --network hr-net hr-worker:v1
+Levantar um `container` com a `imagem` recém criada, usando o comando:
 
 ```
+docker run -P --network hr-net hr-worker:v1
+```
+
+- Obs: o argumento `-P` faz o container levantar com uma porta aleatória
+- Não é necessário definir o nome e nem a porta do container porque o microservice será autoescalável.
 
 ## hr-user
 

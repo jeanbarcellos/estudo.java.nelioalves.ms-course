@@ -118,42 +118,63 @@ docker run -P --network hr-net hr-worker:v1
 
 ## hr-user
 
+Acessar o terminal (em modo administrador) na raiz do projeto `hr-user`
+
+Gerar a `build` Java, usando o comando:
+
+```
+mvnw clean package -DskipTests
 ```
 
+Criar o arquivo `Dockerfile` com o seguinte conteúdo:
+
+```
 FROM openjdk:11
 VOLUME /tmp
 ADD ./target/hr-user-0.0.1-SNAPSHOT.jar hr-user.jar
 ENTRYPOINT ["java","-jar","/hr-user.jar"]
-
 ```
 
+Gerar `imagem` `Docker`, usando o comando:
+
 ```
-
-mvnw clean package -DskipTests
-
 docker build -t hr-user:v1 .
+```
 
+Levantar um `container` com a `imagem` recém criada, usando o comando:
+
+```
 docker run -P --network hr-net hr-user:v1
-
 ```
 
 ## hr-payroll
 
+Acessar o terminal (em modo administrador) na raiz do projeto `hr-payroll`
+
+Gerar a `build` Java, usando o comando:
+
+```
+mvnw clean package -DskipTests
 ```
 
+Criar o arquivo `Dockerfile` com o seguinte conteúdo:
+
+```
 FROM openjdk:11
 VOLUME /tmp
 ADD ./target/hr-payroll-0.0.1-SNAPSHOT.jar hr-payroll.jar
 ENTRYPOINT ["java","-jar","/hr-payroll.jar"]
-
 ```
 
+Gerar `imagem` `Docker`, usando o comando:
+
 ```
-
-mvnw clean package -DskipTests
-
 docker build -t hr-payroll:v1 .
+```
 
+Levantar um `container` com a `imagem` recém criada, usando o comando:
+
+```
 docker run -P --network hr-net hr-payroll:v1
 
 ```

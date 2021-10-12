@@ -66,6 +66,10 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 
 <br>
 
+## Visão geral do sistema
+
+![Visão geral do sistema](https://raw.githubusercontent.com/jeanbarcellos/estudo.java.nelioalves.ms-course/master/docs/01.JPG)
+
 ## Anotações
 
 - **RestTemplate**
@@ -246,6 +250,8 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
     ```
 
 ## Mapa e resumo dos microserviços e seus containers
+
+![Mapa de contaniers](https://raw.githubusercontent.com/jeanbarcellos/estudo.java.nelioalves.ms-course/master/docs/02.JPG)
 
 - **hr-worker** - Manipulação dos trabaladores - **_Porta Diâmica_**
 

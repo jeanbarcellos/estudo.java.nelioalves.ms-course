@@ -20,14 +20,14 @@ O objetivo deste curso não é esgotar todos recursos do ecossistema Spring, mas
 
 Os conteúdos do curso incluem:
 
-- Feign para requisições de API entre microsserviços
-- Ribbon para balanceamento de carga
-- Servidor Eureka para registro dos microsserviços
-- API Gateway Zuul para roteamento e autorização
-- Hystrix para tolerância a falhas
-- OAuth e JWT para autenticação e autorização
+- **Feign** para requisições de API entre microsserviços
+- **Ribbon** para balanceamento de carga
+- _Servidor_ **Eureka** para registro dos microsserviços
+- _API Gateway_ **Zuul** para roteamento e autorização
+- **Hystrix** para tolerância a falhas
+- **OAuth** e **JWT** para autenticação e autorização
 - Servidor de configuração centralizada com dados em repositório Git
-- Geração de containers Docker para os microsserviços e bases de dados
+- Geração de containers **Docker** para os microsserviços e bases de dados
 
 Este curso é de **nível iniciante** do ponto de vista de microsserviços e do ferramental Spring Cloud, mas vale ressaltar que **não é para iniciantes em Java ou Spring Boot**. É preciso já ter pelo menos conhecimento básico de construção de API's REST com Spring Boot e Java.
 
@@ -79,6 +79,16 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
   - Requisições de API entre microsserviços
   - [Documentação](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)
 
+- **Ribbon**
+
+  - Biblioteca Inter Process Communication (IPC) do lado do cliente que é testada em nuvem. Frnece recursos como:
+    - Balanceamento de carga
+    - Tolerância ao erro
+    - Suporte a múltiplos protocolos (HTTP, TCP, UDP) em um modelo assíncrono e reativo
+    - Cache e batching
+  - Fornece algoritmos de balanceamento de carga do lado do cliente
+  - [Documentação](https://github.com/Netflix/ribbon)
+
 - **JAXB**
 
   - Fornece suporte à manipulação de objetos Java e XML. Sua principal característica é a capacidade de vincular XML a objetos Java e vice-versa
@@ -87,11 +97,13 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 - **Spring Cloud**
 
   - Responsável por integrar todas as soluções em aplicações Spring Boot, onde toda configuração é feita através de anotações e propriedades do `application.properties`;
-  - [Documentaçãp](https://spring.io/projects/spring-cloud)
+  - [Documentação](https://spring.io/projects/spring-cloud)
 
 - **Eureka, Discovery Server**
 
   - Comunicação e descoberta de serviços em uma arquitetura de microservices
+  - Resolução de nomes e balanceamento de carga de forma transparente
+  - Permite com que serviços sejam registrados através do _Eureka Server_ e descobertos através do _Eureka Client_, facilitando esse controle de aplicação distribuída
   - [Documentação](https://spring.io/projects/spring-cloud-netflix)
   - [Artigo: Michelli Brito](https://medium.com/@michellibrito/netflix-eureka-comunica%C3%A7%C3%A3o-entre-microservices-383d32d39506)
 
@@ -232,3 +244,45 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
       <relativePath /> <!-- lookup parent from repository -->
     </parent>
     ```
+
+## Mapa e resumo dos microserviços e seus containers
+
+- **hr-worker** - Manipulação dos trabaladores - **_Porta Diâmica_**
+
+  - Eureka Client
+  - Config Client _(configuraçãoes de acesso ao banco de dados)_
+  - Banco de Dados Postgres
+    - **_Porta 5432_**
+
+- **hr-payroll** - Serviço para calcular a folha de pagamento - **_Porta Diâmica_**
+
+  - Eureka Client
+  - Fegin Clients _(comunicação com o microsserviço hr-worker)_
+  - Circuit breaker - Hystrix _(tolerância a falhas)_
+  - Load Balance - Ribbon _(balanceamento de carga)_
+
+- **hr-user** - Manipulação dos usuários - **_Porta Diâmica_**
+
+  - Eureka Client
+  - Config Client _(configuraçãoes de acesso ao banco de dados)_
+  - Banco de Dados Postgres
+    - **_Porta 5433_**
+
+- **hr-oauth** - Serviço de autenticação - **_Porta Diâmica_**
+
+  - Eureka Client
+  - Config Client
+  - Fegin Clients _(comunicação com o microsserviço hr-user)_
+
+- **hr-config-server** - Servidor de configurações - **_Porta 8888_**
+
+  - Config Client _(configurações de autenticação)_
+
+- **hr-eureka-server** - Servidor de registro dos microsserviços - **_Porta 8761_**
+
+  - Eureka Server
+
+- **hr-api-gateway-zull** - API Gateway para roteamento e autorização - **_Porta 8765_**
+
+  - Eureka Client
+  - Config Client _(configuraçãoes para autorização)_

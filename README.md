@@ -277,18 +277,19 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
 - **hr-oauth** - Serviço de autenticação - **_Porta Diâmica_**
 
   - Eureka Client
-  - Config Client
+  - Config Client _(configurações de autenticação)_
   - Fegin Clients _(comunicação com o microsserviço hr-user)_
 
 - **hr-config-server** - Servidor de configurações - **_Porta 8888_**
 
-  - Config Client _(configurações de autenticação)_
+  - Config Server
 
 - **hr-eureka-server** - Servidor de registro dos microsserviços - **_Porta 8761_**
 
   - Eureka Server
 
-- **hr-api-gateway-zull** - API Gateway para roteamento e autorização - **_Porta 8765_**
+- **hr-api-gateway-zuul** - API Gateway para roteamento e autorização - **_Porta 8765_**
 
+  - Zuul Server
   - Eureka Client
   - Config Client _(configuraçãoes para autorização)_

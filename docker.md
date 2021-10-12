@@ -1,5 +1,7 @@
 # Criando e testando containers Docker
 
+![Mapa de contaniers](https://raw.githubusercontent.com/jeanbarcellos/estudo.java.nelioalves.ms-course/master/docs/02.JPG)
+
 ## Criar rede docker para sistema hr
 
 ```

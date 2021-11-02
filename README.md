@@ -293,3 +293,13 @@ Estou muito feliz em apresentar este curso para você, e desejo que ele possa co
   - Zuul Server
   - Eureka Client
   - Config Client _(configuraçãoes para autorização)_
+
+## TO-DO / Trabalhos Futuros
+
+### **Upgrade dos serviços**
+
+- Criar um novo repostório com a atualização dos serviços que foram descontinuados:
+  - **Anteriormente** --> **Hoje**
+  - Hystrix --> **Resliience4J**
+  - Ribbon --> **Spring Cloud Load Balancer**
+  - Zuul --> **Spring Cloud Gateway**

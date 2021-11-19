@@ -1,0 +1,104 @@
+version: '3'
+services:
+  hr-worker-pg12:
+    image: postgres:12-alpine
+    container_name: hr-worker-pg12
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=1234567
+      - POSTGRES_DB=db_hr_worker
+    ports:
+      - 5432:5432
+    networks:
+      - hr-net
+
+  hr-user-pg12:
+    image: postgres:12-alpine
+    container_name: hr-user-pg12
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=1234567
+      - POSTGRES_DB=db_hr_user
+    ports:
+      - 5433:5432
+    networks:
+      - hr-net
+
+  hr-config-server:
+    image: hr-config-server:v1
+    container_name: hr-config-server
+    restart: always
+    environment:
+      - GITHUB_USER=
+      - GITHUB_PASS=
+    ports:
+      - 8888:8888
+    networks:
+      - hr-net
+
+  hr-eureka-server:
+    image: hr-eureka-server:v1
+    container_name: hr-eureka-server
+    restart: always
+    ports:
+      - 8761:8761
+    networks:
+      - hr-net
+    depends_on:
+      - hr-config-server
+
+  hr-worker:
+    image: hr-worker:v1
+    container_name: hr-worker
+    restart: always
+    networks:
+      - hr-net
+    depends_on:
+      - hr-worker-pg12
+
+  hr-user:
+    image: hr-user:v1
+    container_name: hr-user
+    restart: always
+    networks:
+      - hr-net
+    depends_on:
+      - hr-user-pg12
+
+  hr-payroll:
+    image: hr-payroll:v1
+    container_name: hr-payroll
+    restart: always
+    networks:
+      - hr-net
+
+  hr-oauth:
+    image: hr-oauth:v1
+    container_name: hr-oauth
+    restart: always
+    networks:
+      - hr-net
+
+  hr-api-gateway-zuul:
+    image: hr-api-gateway-zuul:v1
+    container_name: hr-api-gateway-zuul
+    restart: always
+    ports:
+      - 8765:8765
+    networks:
+      - hr-net
+
+networks:
+  hr-net:
+    external: true
+    name: hr-net
+
+# docker run -p 5432:5432 --name hr-worker-pg12 --network hr-net -e POSTGRES_PASSWORD=1234567 -e POSTGRES_DB=db_hr_worker postgres:12-alpine
+# docker run -p 5433:5432 --name hr-user-pg12 --network hr-net -e POSTGRES_PASSWORD=1234567 -e POSTGRES_DB=db_hr_user postgres:12-alpine
+# docker run -p 8888:8888 --name hr-config-server --network hr-net -e GITHUB_USER=jeanbarcellos@hotmail.com -e GITHUB_PASS= hr-config-server:v1
+# docker run -p 8761:8761 --name hr-eureka-server --network hr-net hr-eureka-server:v1
+# docker run -P --network hr-net hr-worker:v1
+# docker run -P --network hr-net hr-user:v1
+# docker run -P --network hr-net hr-payroll:v1
+# docker run -P --network hr-net hr-oauth:v1
+# docker run -p 8765:8765 --name hr-api-gateway-zuul --network hr-net hr-api-gateway-zuul:v1
